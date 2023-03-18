@@ -41,6 +41,8 @@ dependencies:
   firebase_auth: ^4.3.0
   pinput: ^2.2.31
   simple_animations: ^3.0.0
+  carousel_slider: ^4.2.1
+  flutter_svg: ^1.1.6
 
 dependency_overrides:
   firebase_core_platform_interface: 4.5.2
