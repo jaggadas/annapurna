@@ -1,7 +1,10 @@
 
 import 'package:annapurna/screens/LoginScreen.dart';
 import 'package:annapurna/utils/colors.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import 'HomePage.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({Key? key}) : super(key: key);
@@ -89,9 +92,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> with WidgetsBinding
         );
       });
     } else {
-      Navigator.of(context).pushReplacementNamed(
-        LoginPage.id
-      );
+      Navigator.push(context, MaterialPageRoute(builder: (context){return FirebaseAuth.instance.currentUser!=null?HomePage(): LoginPage();}));
     }
   }
 
