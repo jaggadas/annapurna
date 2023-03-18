@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "351273732677",
+    "project_id": "annapurna-ebb9c",
+    "storage_bucket": "annapurna-ebb9c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:351273732677:android:cd21f1019ece7451a0b12c",
+        "android_client_info": {
+          "package_name": "com.example.annapurna"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "351273732677-n2uuvu5oluso068935li04ua4bsqcsjl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBf1817kTm0anoUal2PYpmjosQyOVbXay0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "351273732677-n2uuvu5oluso068935li04ua4bsqcsjl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
