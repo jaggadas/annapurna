@@ -2,6 +2,8 @@ import 'package:annapurna/screens/homepage_widget.dart';
 import 'package:annapurna/utils/colors.dart';
 import 'package:flutter/material.dart';
 
+import 'add_your_dishes.dart';
+
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -17,7 +19,7 @@ class _HomePageState extends State<HomePage> {
 
   final List<Widget> _pages = [
     HomePageElement(),
-    Container(),
+    AddYourDishesHome(),
     Container(),
     Container()
   ];
