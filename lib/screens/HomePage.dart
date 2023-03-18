@@ -1,4 +1,5 @@
 import 'package:annapurna/screens/AddDishesSell.dart';
+import 'package:annapurna/screens/customerSupport.dart';
 import 'package:annapurna/screens/donate_your_dishes.dart';
 import 'package:annapurna/screens/homepage_widget.dart';
 import 'package:annapurna/utils/colors.dart';
@@ -112,7 +113,11 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(leading: InkWell(child: Icon(Icons.menu,color: kRed,),onTap: (){
         _scaffoldKey.currentState!.openDrawer();
       },),elevation: 0,backgroundColor: kGrey,),
-      floatingActionButton: FloatingActionButton(onPressed: (){},child: Icon(Icons.support_agent_rounded),backgroundColor: kRed,),
+      floatingActionButton: FloatingActionButton(onPressed: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context){
+          return CustomerSupport();
+        }));
+      },child: Icon(Icons.support_agent_rounded),backgroundColor: kRed,),
       body: _pages[widget.selectedIndex],
     );
   }

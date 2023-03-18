@@ -18,9 +18,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> with WidgetsBinding
   int _currentIndex = 0;
 
   final List<String> _mockImages = [
-    'assets/images/1.png',
-    'assets/images/2.png',
-    'assets/images/3.png',
+    'assets/images/okk.png',
+    'assets/images/two.png',
+    'assets/images/ok.png',
   ];
 
 
