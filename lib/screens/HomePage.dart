@@ -1,3 +1,4 @@
+import 'package:annapurna/screens/AddDishesSell.dart';
 import 'package:annapurna/screens/homepage_widget.dart';
 import 'package:annapurna/utils/colors.dart';
 import 'package:annapurna/utils/firebase.dart';
@@ -7,7 +8,13 @@ import 'add_your_dishes.dart';
 
 
 class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
+  HomePage(){
+
+  }
+  int selectedIndex = 0;
+  HomePage.sellActivated(){
+    selectedIndex=1;
+  }
   static String id = "/homepage";
 
   @override
@@ -15,19 +22,19 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _selectedIndex = 0;
+
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   final List<Widget> _pages = [
     HomePageElement(),
-    AddYourDishesHome(),
+    AddDishesSell(),
     Container(),
     Container()
   ];
 
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index;
+      widget.selectedIndex = index;
     });
   }
   Widget getDrawerElements(BuildContext contextt){
@@ -54,7 +61,7 @@ class _HomePageState extends State<HomePage> {
         child: getDrawerElements(context),
       ),
       bottomNavigationBar:BottomNavigationBar(backgroundColor: kGrey,
-        currentIndex: _selectedIndex,
+        currentIndex: widget.selectedIndex,
         selectedItemColor: kRed,
         unselectedItemColor: Colors.white,
         onTap: _onItemTapped,
@@ -82,7 +89,7 @@ class _HomePageState extends State<HomePage> {
         _scaffoldKey.currentState!.openDrawer();
       },),elevation: 0,backgroundColor: kGrey,),
       floatingActionButton: FloatingActionButton(onPressed: (){},child: Icon(Icons.support_agent_rounded),backgroundColor: kRed,),
-      body: _pages[_selectedIndex],
+      body: _pages[widget.selectedIndex],
     );
   }
 }
