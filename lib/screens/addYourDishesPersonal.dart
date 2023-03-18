@@ -135,10 +135,10 @@ class AddYourDishesPersonalDetails extends StatelessWidget {
                   SizedBox(height: 10,),
                   GestureDetector(
                     onTap: () async {
-                      itef (!_formKey.currentState!.validate()) {
+                      if (!_formKey.currentState!.validate()) {
                         return;
                       }
-                      FlutterToastService().showToast("Registration Completed.");
+                      FlutterToastService().showToast("Registration Completed");
                       Navigator.push(context, MaterialPageRoute(builder: (context){
                         return HomePage.sellActivated();
                       }));
