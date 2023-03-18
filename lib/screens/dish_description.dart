@@ -4,22 +4,20 @@ import 'package:annapurna/utils/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'homepage_widget.dart';
+
 class dish_description extends StatefulWidget {
+  dish_description({required this.dishHomePage});
   static const String id = 'dish_description';
-  final String itemName;
-  final String itemPrice;
-  final String imagePath;
-  const dish_description({super.key,
-  required this.imagePath,
-  required this.itemName,
-  required this.itemPrice,
-  });
+  DishHomePage ?dishHomePage;
+
 
   @override
   State<dish_description> createState() => _dish_descriptionState();
 }
 
 class _dish_descriptionState extends State<dish_description> {
+  int quantity=0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,8 +43,9 @@ class _dish_descriptionState extends State<dish_description> {
                 ),
                 InkWell(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => cart(imagePath: '', itemName: '', itemPrice: '',)
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => cart(dishHomePage: widget.dishHomePage, quantity: quantity,),
                     ));
+
                   },
                   child: Icon(
                     CupertinoIcons.cart_fill,
@@ -61,10 +60,12 @@ class _dish_descriptionState extends State<dish_description> {
                 child: CircleAvatar(
                   backgroundColor: kGrey,
                   radius: 200,
-                  child: Image.asset(
-                    "assets/images/thali_no.png",
-                    height: MediaQuery.of(context).size.height / 2.4,
-                    fit: BoxFit.cover,
+                  child: ClipOval(
+                    child: Image.network(
+                      '${widget.dishHomePage!.dishImage}',
+                      height: MediaQuery.of(context).size.height / 2.4,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 )),
             SizedBox(
@@ -79,7 +80,7 @@ class _dish_descriptionState extends State<dish_description> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Homemade Thali",
+                        '${widget.dishHomePage!.dishName}',
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 22,
@@ -88,7 +89,12 @@ class _dish_descriptionState extends State<dish_description> {
                       Row(
                         children: [
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                             setState(() {
+                               if(quantity!=0)
+                               quantity--;
+                             });
+                            },
                             child: Container(
                               alignment: Alignment.center,
                               width: 30,
@@ -102,8 +108,11 @@ class _dish_descriptionState extends State<dish_description> {
                               ),
                             ),
                           ),
+                          SizedBox(
+                            width: 8,
+                          ),
                           Text(
-                            " 2",
+                            '${quantity.toString()}',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 18,
@@ -114,7 +123,11 @@ class _dish_descriptionState extends State<dish_description> {
                             width: 8,
                           ),
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              setState(() {
+                                  quantity++;
+                              });
+                            },
                             child: Container(
                               alignment: Alignment.center,
                               width: 30,
@@ -137,7 +150,7 @@ class _dish_descriptionState extends State<dish_description> {
                   height: 15,
                 ),
                 Text(
-                  "An Indian thali comprises – main-course gravy, dal or curry, sabzi or stir fry, condiments like raita, chutney, pickle, salad, papadum, and side dishes like roti, naan, chapati, paratha, or boiled rice.",
+                  '${widget.dishHomePage!.dishDescription}',
                   style: TextStyle(color: Colors.white54, fontSize: 16),
                 ),
               ],
@@ -145,7 +158,7 @@ class _dish_descriptionState extends State<dish_description> {
           ],
         ),
       )),
-      bottomNavigationBar: nav_bar(),
+      bottomNavigationBar: nav_bar(dishHomePage: widget.dishHomePage, quantity: quantity,),
     );
   }
 }
