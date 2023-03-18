@@ -46,6 +46,7 @@ dependencies:
   flutter_svg: ^1.1.6
   fluttertoast: ^8.0.8
   image_picker: ^0.8.7
+  http: ^0.13.5
 
 dependency_overrides:
   firebase_core_platform_interface: 4.5.2
