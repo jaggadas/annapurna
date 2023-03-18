@@ -1,6 +1,9 @@
 import 'package:annapurna/screens/homepage_widget.dart';
 import 'package:annapurna/utils/colors.dart';
+import 'package:annapurna/utils/firebase.dart';
 import 'package:flutter/material.dart';
+
+import 'add_your_dishes.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -17,7 +20,7 @@ class _HomePageState extends State<HomePage> {
 
   final List<Widget> _pages = [
     HomePageElement(),
-    Container(),
+    AddYourDishesHome(),
     Container(),
     Container()
   ];
@@ -33,7 +36,8 @@ class _HomePageState extends State<HomePage> {
       padding: EdgeInsets.zero,
       children: <Widget>[
 
-       Text("Hello")
+       SizedBox(height: 200,),
+        TextButton(onPressed: ()async{await AuthService().signOut(contextt);}, child: Text("Log Out",style: TextStyle(color: Colors.white),))
       ],
     );
   }

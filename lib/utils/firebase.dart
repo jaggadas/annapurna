@@ -39,6 +39,15 @@ class AuthService{
       print(e);
     }
   }
+  signOut(BuildContext context)async{
+    try {
+      await auth.signOut();
+      Navigator.pushNamed(context, LoginPage.id);
+    }
+    catch(e){
+      print(e);
+    }
+  }
 
 
 

@@ -164,7 +164,7 @@ class _FoodElementHomePageState extends State<FoodElementHomePage> {
                       height: 6.0,
                     ),
                     Row(children: [SvgPicture.asset(
-                        "assets/vegnonveg.svg",
+                        "assets/images/vegnonveg.svg",
                         semanticsLabel: 'vegnonveg',color: Colors.green,
                         height: 20,
                     ),SizedBox(width:10),Text("Maharashtrian",style: TextStyle(color: Colors.white),)],),
