@@ -11,8 +11,8 @@ import '../screens/NameScreen.dart';
 import 'dart:io';
 
 
-class AuthService{
-  var kUsers='users';
+class AuthService {
+  var kUsers = 'users';
   var auth = FirebaseAuth.instance;
   String kRegisteredUser = "registered_user";
   String kName = 'name';
@@ -20,18 +20,25 @@ class AuthService{
   String kAddress = 'address';
   String kLocality = 'locality';
   String kCity = 'city';
-  String kPincode='pincode';
+  String kPincode = 'pincode';
   String kState = 'state';
+  String kDishes = 'dishes';
+  String kUserId = 'user_id';
+  String kPrice = 'price';
+  String kDescription = 'description';
+  String kCuisine = 'cuisine';
+  String kImage = 'image';
 
- var firestore = FirebaseFirestore.instance;
+  var firestore = FirebaseFirestore.instance;
   var firestore1 = FirebaseFirestore.instance;
-  signIn(AuthCredential authCredential,context)async{
-    try{
+
+  signIn(AuthCredential authCredential, context) async {
+    try {
       await FirebaseAuth.instance.signInWithCredential(authCredential);
       showNameScreen(context);
       // Navigator.pushNamed(context, Interstitial.id);
     }
-    catch(e){
+    catch (e) {
       //   Fluttertoast.showToast(
       //       msg: "$e",
       //       toastLength: Toast.LENGTH_SHORT,
@@ -41,80 +48,107 @@ class AuthService{
       //       textColor: Colors.white,
       //       fontSize: 16.0);
     }
-
   }
-  signInWithOTP(smsCode, verId,BuildContext context) {
-    try{
+
+  signInWithOTP(smsCode, verId, BuildContext context) {
+    try {
       AuthCredential authCreds = PhoneAuthProvider.credential(
           verificationId: verId, smsCode: smsCode);
-      signIn(authCreds,context);}
-    catch(e){
+      signIn(authCreds, context);
+    }
+    catch (e) {
       print(e);
     }
   }
-  signOut(BuildContext context)async{
+
+  signOut(BuildContext context) async {
     try {
       await auth.signOut();
       Navigator.pushNamed(context, LoginPage.id);
     }
-    catch(e){
+    catch (e) {
       print(e);
     }
   }
-  isUserRegistered()async{
-    final CollectionReference collectionRef = FirebaseFirestore.instance.collection(kRegisteredUser);
-    final DocumentSnapshot documentSnapshot = await collectionRef.doc(auth.currentUser?.uid).get();
+
+  isUserRegistered() async {
+    final CollectionReference collectionRef = FirebaseFirestore.instance
+        .collection(kRegisteredUser);
+    final DocumentSnapshot documentSnapshot = await collectionRef.doc(
+        auth.currentUser?.uid).get();
     if (documentSnapshot.exists) {
       // do something with the document data
       return true;
     }
     return false;
   }
-  registerUserForSelling(String name, String email,String address, String locality, String city, String pincode, String state)async{
-    try{
-      await firestore.collection(kRegisteredUser).doc(auth.currentUser?.uid).set({
-        kName:name,kEmail:email,kAddress:email,kLocality:locality,kCity:city,kPincode:pincode,kState:state
+
+  registerUserForSelling(String name, String email, String address,
+      String locality, String city, String pincode, String state) async {
+    try {
+      await firestore.collection(kRegisteredUser)
+          .doc(auth.currentUser?.uid)
+          .set({
+        kName: name,
+        kEmail: email,
+        kAddress: email,
+        kLocality: locality,
+        kCity: city,
+        kPincode: pincode,
+        kState: state
       });
-    }catch(e){
+    } catch (e) {
       print(e);
     }
   }
 
-  showNameScreen(BuildContext context) async{
-    final CollectionReference collectionRef = FirebaseFirestore.instance.collection(kUsers);
-    final DocumentSnapshot documentSnapshot = await collectionRef.doc(auth.currentUser?.uid).get();
+  showNameScreen(BuildContext context) async {
+    final CollectionReference collectionRef = FirebaseFirestore.instance
+        .collection(kUsers);
+    final DocumentSnapshot documentSnapshot = await collectionRef.doc(
+        auth.currentUser?.uid).get();
     if (documentSnapshot.exists) {
       Navigator.pushNamed(context, HomePage.id);
       print('exists');
     }
-    else
-      {
-        Navigator.pushNamed(context, NameScreen.id);
-        print('does not exist');
-      }
+    else {
+      Navigator.pushNamed(context, NameScreen.id);
+      print('does not exist');
+    }
   }
 
-  addName(String name) async{
+  addName(String name) async {
     await firestore1.collection(kUsers).doc(auth.currentUser?.uid).set(
         {
           "name": name,
         });
   }
-  addDish(String image, String price, String description,File imageFile){
+
+  addDish(String name, String price, String description, File imageFile, String cuisine) {
     String fileName = imageFile.path;
-    Reference firebaseStorageRef =
-    FirebaseStorage.instance.ref().child('uploads/$fileName');
-    UploadTask uploadTask = firebaseStorageRef.putFile(imageFile);
-    uploadTask.then((res) {
-      res.ref.getDownloadURL().then((value) async{
 
-          await firestore.collection(kUsers).doc(auth.currentUser?.uid).update({kImage1: value});
+    try {
+      Reference firebaseStorageRef = FirebaseStorage.instance.ref().child(
+          'uploads/$fileName');
 
-
+      UploadTask uploadTask = firebaseStorageRef.putFile(imageFile);
+      uploadTask.then((res) {
+        res.ref.getDownloadURL().then((value) async {
+          try{await firestore.collection(kDishes).doc().set({
+            kUserId: auth.currentUser?.uid,
+            kName: name,
+            kCuisine:cuisine,
+            kPrice: price,
+            kDescription: description,
+            kImage: value
+          });
+        }catch(e){
+            print(e);
+          }
+        });
       });
-    });
+    } catch (e) {
+      print(e);
+    }
   }
-
-
 }
-

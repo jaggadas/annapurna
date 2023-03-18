@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:annapurna/utils/colors.dart';
+import 'package:annapurna/utils/firebase.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -21,11 +22,14 @@ class _AddDishesSellState extends State<AddDishesSell> {
   var nameController = TextEditingController();
   var priceController = TextEditingController();
   var descriptionController = TextEditingController();
+  var cuisineController = TextEditingController();
+
   File? imageFile=null;
   resetState(){
     nameController.text="";
     priceController.text="";
     descriptionController.text="";
+    cuisineController.text="";
     imageFile=null;
     setState(() {
 
@@ -79,6 +83,18 @@ class _AddDishesSellState extends State<AddDishesSell> {
                   ),
                 ),
               ),
+                Text('Cuisine',style: TextStyle(color: Colors.white,fontSize: 15),),
+                SizedBox(height: 5,),
+                Container(height: textFieldHeight,width: MediaQuery.of(context).size.width,
+                  child: TextFormField(style: getTextFieldStyle(),
+                    controller: cuisineController,
+                    validator: validateNotEmptyString,
+                    decoration: getInputDecoration(
+                      "Enter cuisine",
+
+                    ),
+                  ),
+                ),
 
               Text('Price per piece',style: TextStyle(color: Colors.white,fontSize: 15),),
               SizedBox(height: 5,),
@@ -114,7 +130,10 @@ class _AddDishesSellState extends State<AddDishesSell> {
                   if(imageFile==null){
                     FlutterToastService().showToast("Please add image");
                   }else{
-                      resetState();
+                    print("HELLO");
+
+                      await AuthService().addDish(nameController.text, priceController.text, descriptionController.text, imageFile!,cuisineController.text);
+                    resetState();
                   }
 
 
