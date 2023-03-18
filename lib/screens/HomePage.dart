@@ -13,6 +13,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   final List<Widget> _pages = [
     HomePageElement(),
@@ -26,11 +27,28 @@ class _HomePageState extends State<HomePage> {
       _selectedIndex = index;
     });
   }
+  Widget getDrawerElements(BuildContext contextt){
+    return ListView(
+      // Important: Remove any padding from the ListView.
+      padding: EdgeInsets.zero,
+      children: <Widget>[
+
+       Text("Hello")
+      ],
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold(key: _scaffoldKey,
       backgroundColor: kGrey,
+      drawer:  Drawer(backgroundColor: kRed,
+
+        // Add a ListView to the drawer. This ensures the user can scroll
+        // through the options in the drawer if there isn't enough vertical
+        // space to fit everything.
+        child: getDrawerElements(context),
+      ),
       bottomNavigationBar:BottomNavigationBar(backgroundColor: kGrey,
         currentIndex: _selectedIndex,
         selectedItemColor: kRed,
@@ -56,7 +74,9 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      appBar: AppBar(leading: InkWell(child: Icon(Icons.menu,color: kRed,),onTap: (){},),elevation: 0,backgroundColor: kGrey,),
+      appBar: AppBar(leading: InkWell(child: Icon(Icons.menu,color: kRed,),onTap: (){
+        _scaffoldKey.currentState!.openDrawer();
+      },),elevation: 0,backgroundColor: kGrey,),
       floatingActionButton: FloatingActionButton(onPressed: (){},child: Icon(Icons.support_agent_rounded),backgroundColor: kRed,),
       body: _pages[_selectedIndex],
     );
