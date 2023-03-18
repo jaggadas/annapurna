@@ -7,6 +7,7 @@ import 'package:annapurna/utils/firebase.dart';
 import 'package:flutter/material.dart';
 
 import 'add_your_dishes.dart';
+import 'ngo.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -16,6 +17,10 @@ class HomePage extends StatefulWidget {
   int selectedIndex = 0;
   HomePage.sellActivated(){
     selectedIndex=1;
+  }
+  HomePage.launchSlide(int index){
+    selectedIndex=index;
+
   }
   static String id = "/homepage";
 
@@ -30,7 +35,7 @@ class _HomePageState extends State<HomePage> {
   List<Widget> _pages =[HomePageElement(),
     AddYourDishesHome(),
     DonateYourDishesHome(),
-    Container()];
+    ngo()];
   @override
   void initState() {
     // TODO: implement initState
@@ -49,7 +54,7 @@ class _HomePageState extends State<HomePage> {
       HomePageElement(),
       isUserRegistered?AddDishesSell():AddYourDishesHome(),
       DonateYourDishesHome(),
-      Container(),
+      ngo(),
     ];
     setState(() {
 
@@ -106,7 +111,7 @@ class _HomePageState extends State<HomePage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.group),
-            label: 'Join Us',
+            label: 'Register NGO',
           ),
         ],
       ),

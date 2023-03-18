@@ -102,7 +102,7 @@ class MessageBubble extends StatelessWidget {
         children: [
           Text(
             messageSender,
-            style: TextStyle(fontSize: 12, color: Colors.black54),
+            style: TextStyle(fontSize: 12, color: Colors.white),
           ),
           Material(
               color: isMe?kRed:kGreyAccent,

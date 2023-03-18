@@ -48,8 +48,8 @@ class _ngoState extends State<ngo> {
                    // backgroundColor: kGrey,
                    // radius: 200,
                     child: Image.asset(
-                      "assets/images/ngo1-01.png",
-                      height: MediaQuery.of(context).size.height / 2.0,
+                      "assets/images/ngo.png",
+                      height: MediaQuery.of(context).size.height / 2.5,
                       fit: BoxFit.cover,
                     ),
                   )),
@@ -69,7 +69,7 @@ class _ngoState extends State<ngo> {
                           "Join us in building a better world for all",
                           style: TextStyle(
                               color: Colors.white,
-                              fontSize: 18,
+                              fontSize: 16,
                               fontWeight: FontWeight.bold),
                         ),
                        

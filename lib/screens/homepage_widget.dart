@@ -6,16 +6,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../utils/colors.dart';
+import 'HomePage.dart';
 
 
 class HomePageElement extends StatelessWidget {
   HomePageElement({Key? key}) : super(key: key);
   var _firestore = FirebaseFirestore.instance;
   List carouselImageList = [
-    'assets/images/chef_india.png',
-    'assets/images/chef_india.png',
-    'assets/images/chef_india.png'
-  ];
+    'assets/images/home3.png',
+
+    'assets/images/home1.png',
+    'assets/images/home2.png',];
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -75,16 +76,20 @@ class HomePageElement extends StatelessWidget {
       );
 
   }
-  Widget getCarouselBox(Widget childWidget,double radius,double height,) {
-    return Container(
-      height: height,
-      decoration: BoxDecoration(
-        color: kOrange,
-        borderRadius: BorderRadius.circular(radius),
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(radius),
-        child: childWidget,
+  Widget getCarouselBox(Widget childWidget,double radius,double height,VoidCallback onTap) {
+
+
+    return GestureDetector(onTap:onTap ,
+      child: Container(
+        height: height,
+        decoration: BoxDecoration(
+          color: kOrange,
+          borderRadius: BorderRadius.circular(radius),
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(radius),
+          child: childWidget,
+        ),
       ),
     );
   }
@@ -102,6 +107,11 @@ class HomePageElement extends StatelessWidget {
         ),
         10,
         height2,
+          (){
+          Navigator.push(context, MaterialPageRoute(builder: (context){
+            return HomePage.launchSlide(1);
+          }));
+        }
       ),
     ),
       Padding(
@@ -113,6 +123,11 @@ class HomePageElement extends StatelessWidget {
           ),
           10,
           height2,
+                (){
+              Navigator.push(context, MaterialPageRoute(builder: (context){
+                return HomePage.launchSlide(2);
+              }));
+            }
         ),
       ),
       Padding(
@@ -124,6 +139,11 @@ class HomePageElement extends StatelessWidget {
           ),
           10,
           height2,
+                (){
+              Navigator.push(context, MaterialPageRoute(builder: (context){
+                return HomePage.launchSlide(3);
+              }));
+            }
         ),
       ),
     ],);
