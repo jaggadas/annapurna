@@ -7,7 +7,7 @@ import 'add_your_dishes.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
-  String id = "/homepage";
+  static String id = "/homepage";
 
   @override
   State<HomePage> createState() => _HomePageState();
