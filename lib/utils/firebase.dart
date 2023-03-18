@@ -1,4 +1,6 @@
 import 'package:annapurna/screens/HomePage.dart';
+import 'package:annapurna/screens/NameScreen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:annapurna/screens/LoginScreen.dart';
@@ -7,15 +9,15 @@ import 'package:annapurna/screens/HomePage.dart';
 
 
 class AuthService{
-
+  var kUsers='users';
   var auth = FirebaseAuth.instance;
-
+  var firestore1 = FirebaseFirestore.instance;
 
 
   signIn(AuthCredential authCredential,context)async{
     try{
       await FirebaseAuth.instance.signInWithCredential(authCredential);
-      Navigator.pushNamed(context, HomePage.id);
+      showNameScreen(context);
       // Navigator.pushNamed(context, Interstitial.id);
     }
     catch(e){
@@ -49,7 +51,26 @@ class AuthService{
     }
   }
 
+  showNameScreen(BuildContext context) async{
+    final CollectionReference collectionRef = FirebaseFirestore.instance.collection(kUsers);
+    final DocumentSnapshot documentSnapshot = await collectionRef.doc(auth.currentUser?.uid).get();
+    if (documentSnapshot.exists) {
+      Navigator.pushNamed(context, HomePage.id);
+      print('exists');
+    }
+    else
+      {
+        Navigator.pushNamed(context, NameScreen.id);
+        print('does not exist');
+      }
+  }
 
+  addName(String name) async{
+    await firestore1.collection(kUsers).doc(auth.currentUser?.uid).set(
+        {
+          "name": name,
+        });
+  }
 
 
 }
