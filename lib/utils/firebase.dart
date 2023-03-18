@@ -108,7 +108,7 @@ class AuthService{
     uploadTask.then((res) {
       res.ref.getDownloadURL().then((value) async{
 
-          await firestore.collection(kUsers).doc(auth.currentUser?.uid).update({kImage1: value});
+          //await firestore.collection(kUsers).doc(auth.currentUser?.uid).update({kImage1: value});
 
 
       });

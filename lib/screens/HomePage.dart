@@ -1,4 +1,5 @@
 import 'package:annapurna/screens/AddDishesSell.dart';
+import 'package:annapurna/screens/donate_your_dishes.dart';
 import 'package:annapurna/screens/homepage_widget.dart';
 import 'package:annapurna/utils/colors.dart';
 import 'package:annapurna/utils/firebase.dart';
@@ -27,7 +28,7 @@ class _HomePageState extends State<HomePage> {
   bool isUserRegistered = false;
   List<Widget> _pages =[HomePageElement(),
     AddYourDishesHome(),
-    Container(),
+    DonateYourDishesHome(),
     Container()];
   @override
   void initState() {
@@ -46,8 +47,8 @@ class _HomePageState extends State<HomePage> {
     _pages = [
       HomePageElement(),
       isUserRegistered?AddDishesSell():AddYourDishesHome(),
+      DonateYourDishesHome(),
       Container(),
-      Container()
     ];
     setState(() {
 
