@@ -100,127 +100,129 @@ class _OtpPageState extends State<OtpPage> {
         ),
       ),
       backgroundColor: kGrey,
-      body: Container(
-        child: Column(
-          children: <Widget>[
-            Container(
-              child: Stack(
-                children: [Positioned(
-                  child: FadeAnimation(
-                    1.6,
-                    Container(
-                      margin: EdgeInsets.only(top: 50),
-                      child: Center(
-                        child: Text(
-                          "Verify Code",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize:
-                              MediaQuery.of(context).size.height / 20,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        left: 70.0, top: 100.0, bottom: 100.0, right: 70.0),
-                    child: Image.asset(
-                      'assets/images/otp_image.png',
-                      width: MediaQuery.of(context).size.width / 1.7,
-                      height: MediaQuery.of(context).size.height / 4,
-                    ),
-                  )
-      ],
-              ),
-
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 30.0, right: 30.0),
-              child: Column(
-                children: <Widget>[
-                  FadeAnimation(
-                    1.8,
-                    Container(
-                      padding: EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                          color: kGrey,
-                          borderRadius: BorderRadius.circular(10),
-                          ),
-                      child: Column(
-                        children: <Widget>[
-                          Pinput(
-                            length: 6,
-                            showCursor: true,
-                            onChanged: (value) {
-                              enteredOtp = value;
-                            },
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  FadeAnimation(
-                    2,
-                    GestureDetector(
-                      onTap: () async {
-                        if (enteredOtp.length == 6) {
-                          if (codeSent) {
-                            try {
-                              await AuthService().signInWithOTP(
-                                  enteredOtp, verificationId, context);
-                              Navigator.pushNamed(context, HomePage.id);
-                            }
-                            catch(e) {
-                              print(e);
-                            }
-                          }
-                        }
-                      },
-                      child: Container(
-                        height: 50,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            gradient: LinearGradient(colors: [
-                              Color.fromRGBO(255, 169, 0, 1),
-                              Color.fromRGBO(255, 169, 0, .6),
-                            ])),
+      body: SingleChildScrollView(
+        child: Container(
+          child: Column(
+            children: <Widget>[
+              Container(
+                child: Stack(
+                  children: [Positioned(
+                    child: FadeAnimation(
+                      1.6,
+                      Container(
+                        margin: EdgeInsets.only(top: 50),
                         child: Center(
                           child: Text(
-                            "Verify phone number",
+                            "Verify Code",
                             style: TextStyle(
                                 color: Colors.white,
+                                fontSize:
+                                MediaQuery.of(context).size.height / 20,
                                 fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 70,
-                  ),
-                  FadeAnimation(
-                    1.5,
-                    TextButton(
-                        onPressed: () {
-                          Navigator.pushNamedAndRemoveUntil(
-                              context, LoginPage.id, (route) => false);
-                        },
-                        child: Text(
-                          "Edit phone number",
-                          style: TextStyle(
-                            color: kMustard,
-                          ),
-                        )),
-                  ),
-                ],
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          left: 70.0, top: 100.0, bottom: 100.0, right: 70.0),
+                      child: Image.asset(
+                        'assets/images/otp_image.png',
+                        width: MediaQuery.of(context).size.width / 1.7,
+                        height: MediaQuery.of(context).size.height / 4,
+                      ),
+                    )
+        ],
+                ),
+
               ),
-            )
-          ],
+              Padding(
+                padding: EdgeInsets.only(left: 30.0, right: 30.0),
+                child: Column(
+                  children: <Widget>[
+                    FadeAnimation(
+                      1.8,
+                      Container(
+                        padding: EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                            color: kGrey,
+                            borderRadius: BorderRadius.circular(10),
+                            ),
+                        child: Column(
+                          children: <Widget>[
+                            Pinput(
+                              length: 6,
+                              showCursor: true,
+                              onChanged: (value) {
+                                enteredOtp = value;
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    FadeAnimation(
+                      2,
+                      GestureDetector(
+                        onTap: () async {
+                          if (enteredOtp.length == 6) {
+                            if (codeSent) {
+                              try {
+                                await AuthService().signInWithOTP(
+                                    enteredOtp, verificationId, context);
+                              }
+                              catch(e) {
+                                print(e);
+                              }
+                            }
+                          }
+                        },
+                        child: Container(
+                          height: 50,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              gradient: LinearGradient(colors: [
+                                Color.fromRGBO(255, 169, 0, 1),
+                                Color.fromRGBO(255, 169, 0, .6),
+                              ])),
+                          child: Center(
+                            child: Text(
+                              "Verify phone number",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 70,
+                    ),
+                    FadeAnimation(1.5, Text('The code was sent to:  ${widget.phoneNumber}', style: TextStyle(color: Colors.white),)),
+                    FadeAnimation(
+                      1.5,
+                      TextButton(
+                          onPressed: () {
+                            Navigator.pushNamedAndRemoveUntil(
+                                context, LoginPage.id, (route) => false);
+                          },
+                          child: Text(
+                            "Edit phone number",
+                            style: TextStyle(
+                              color: kMustard,
+                            ),
+                          )),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

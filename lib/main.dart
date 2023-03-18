@@ -1,5 +1,6 @@
 import 'package:annapurna/screens/HomePage.dart';
 import 'package:annapurna/screens/LoginScreen.dart';
+import 'package:annapurna/screens/NameScreen.dart';
 import 'package:annapurna/screens/Splash.dart';
 import 'package:annapurna/screens/OnboardingScreen.dart';
 import 'package:annapurna/screens/Splash.dart';
@@ -22,13 +23,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: FirebaseAuth.instance.currentUser!=null?HomePage():LoginPage(),
+        home: splash(),
         routes: {
           OnBoardingScreen.id:(context)=> OnBoardingScreen(),
           splash.id:(context)=> splash(),
           HomePage.id:(context)=> HomePage(),
           LoginPage.id:(context)=> LoginPage(),
           dish_description.id:(context)=> dish_description(),
+          NameScreen.id:(context)=> NameScreen(),
         } );
 
 
