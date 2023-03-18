@@ -1,4 +1,5 @@
 import 'package:annapurna/screens/HomePage.dart';
+import 'package:annapurna/screens/LoginScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -16,9 +17,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: HomePage(),
+        home: LoginPage(),
         routes: {
-
+          HomePage.id:(context)=> HomePage(),
+          LoginPage.id:(context)=> LoginPage(),
         } );
 
 
