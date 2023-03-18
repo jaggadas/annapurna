@@ -104,26 +104,38 @@ class _OtpPageState extends State<OtpPage> {
         child: Column(
           children: <Widget>[
             Container(
-              child: Positioned(
-                child: FadeAnimation(
-                  1.6,
-                  Container(
-                    margin: EdgeInsets.only(top: 50),
-                    child: Center(
-                      child: Text(
-                        "Verify Code",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize:
-                            MediaQuery.of(context).size.height / 20,
-                            fontWeight: FontWeight.bold),
+              child: Stack(
+                children: [Positioned(
+                  child: FadeAnimation(
+                    1.6,
+                    Container(
+                      margin: EdgeInsets.only(top: 50),
+                      child: Center(
+                        child: Text(
+                          "Verify Code",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize:
+                              MediaQuery.of(context).size.height / 20,
+                              fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ),
                   ),
                 ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: 70.0, top: 100.0, bottom: 100.0, right: 70.0),
+                    child: Image.asset(
+                      'assets/images/otp_image.png',
+                      width: MediaQuery.of(context).size.width / 1.7,
+                      height: MediaQuery.of(context).size.height / 4,
+                    ),
+                  )
+      ],
               ),
+
             ),
-            SizedBox(height: 200,),
             Padding(
               padding: EdgeInsets.only(left: 30.0, right: 30.0),
               child: Column(
@@ -133,14 +145,9 @@ class _OtpPageState extends State<OtpPage> {
                     Container(
                       padding: EdgeInsets.all(5),
                       decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: kGrey,
                           borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                                color: Color.fromRGBO(143, 148, 251, 0.5),
-                                blurRadius: 20.0,
-                                offset: Offset(0, 10))
-                          ]),
+                          ),
                       child: Column(
                         children: <Widget>[
                           Pinput(
@@ -177,10 +184,10 @@ class _OtpPageState extends State<OtpPage> {
                       child: Container(
                         height: 50,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(30),
                             gradient: LinearGradient(colors: [
-                              Color.fromRGBO(143, 148, 251, 1),
-                              Color.fromRGBO(143, 148, 251, .6),
+                              Color.fromRGBO(255, 169, 0, 1),
+                              Color.fromRGBO(255, 169, 0, .6),
                             ])),
                         child: Center(
                           child: Text(
@@ -206,7 +213,7 @@ class _OtpPageState extends State<OtpPage> {
                         child: Text(
                           "Edit phone number",
                           style: TextStyle(
-                            color: Color.fromRGBO(143, 148, 251, 1),
+                            color: kMustard,
                           ),
                         )),
                   ),

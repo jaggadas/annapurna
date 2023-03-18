@@ -31,7 +31,7 @@ class _LoginPageState extends State<LoginPage> {
           child: Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              height: MediaQuery.of(context).size.height/2,
+              height: 400,
               child: Column(
                children: [
                  Text('Welcome!', style: TextStyle(color: Colors.white, fontSize: 50),),
@@ -52,6 +52,7 @@ class _LoginPageState extends State<LoginPage> {
                        Container(
                          width: MediaQuery.of(context).size.width*0.9,
                          child: TextField(
+                           style: TextStyle(color: Colors.white),
                            keyboardType: TextInputType.phone,
                            onChanged: (value) {
                              phone = countrycode.text + value;

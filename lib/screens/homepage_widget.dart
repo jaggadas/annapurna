@@ -8,9 +8,9 @@ import '../utils/colors.dart';
 class HomePageElement extends StatelessWidget {
   HomePageElement({Key? key}) : super(key: key);
   List carouselImageList = [
-    'assets/chef_india.png',
-    'assets/chef_india.png',
-    'assets/chef_india.png'
+    'assets/images/chef_india.png',
+    'assets/images/chef_india.png',
+    'assets/images/chef_india.png'
   ];
   @override
   Widget build(BuildContext context) {
@@ -133,7 +133,7 @@ class _FoodElementHomePageState extends State<FoodElementHomePage> {
                       topLeft: Radius.circular(15),
                       bottomLeft: Radius.circular(15)),
                   child: Image.asset(
-                    "assets/food.jpeg",
+                    "assets/images/food.jpeg",
                     height: 180.0,
                     width: 120.0,
                     fit: BoxFit.cover,
