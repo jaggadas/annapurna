@@ -31,7 +31,18 @@ class AuthService {
 
   var firestore = FirebaseFirestore.instance;
   var firestore1 = FirebaseFirestore.instance;
+  getName(String docid) async {
+    try{
+      DocumentSnapshot data = await firestore
+          .collection(kUsers)
+          .doc(docid)
+          .get();
+      return data[kName];
+    }catch(e){
 
+      print(e);
+    }
+  }
   signIn(AuthCredential authCredential, context) async {
     try {
       await FirebaseAuth.instance.signInWithCredential(authCredential);

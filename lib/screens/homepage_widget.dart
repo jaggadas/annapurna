@@ -1,4 +1,7 @@
+import 'package:annapurna/utils/constants.dart';
+import 'package:annapurna/utils/firebase.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -7,6 +10,7 @@ import '../utils/colors.dart';
 
 class HomePageElement extends StatelessWidget {
   HomePageElement({Key? key}) : super(key: key);
+  var _firestore = FirebaseFirestore.instance;
   List carouselImageList = [
     'assets/images/chef_india.png',
     'assets/images/chef_india.png',
@@ -28,14 +32,48 @@ class HomePageElement extends StatelessWidget {
     );
   }
   Widget getDishes(){
-    return Column(
-      children: [
-        FoodElementHomePage(),
-        FoodElementHomePage(),
-        FoodElementHomePage(),
-        FoodElementHomePage(),
-      ],
-    );
+    // return Column(
+    //   children: [
+    //     FoodElementHomePage(),
+    //     FoodElementHomePage(),
+    //     FoodElementHomePage(),
+    //     FoodElementHomePage(),
+    //   ],
+    // );
+
+      return StreamBuilder<QuerySnapshot>(
+        builder: (context, snapshot) {
+          List<FoodElementHomePage> messageWidgets = [];
+          if (!snapshot.hasData) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          final messages = snapshot.data?.docs.reversed;
+
+          for (var message in messages!) {
+            final dishName = message.get(kName);
+            final dishDescription = message.get(kDescription);
+            final dishImage = message.get(kImage);
+            final dishCuisine = message.get(kCuisine);
+            final dishPrice = message.get(kPrice);
+            final sellerId = message.get(kUserId);
+
+            DishHomePage dishHomePage = DishHomePage(dishName: dishName, dishDescription: dishDescription, dishImage: dishImage, dishCuisine: dishCuisine, dishPrice: dishPrice, sellerId: sellerId);
+
+            messageWidgets.add(FoodElementHomePage(dishHomePage: dishHomePage,));
+          }
+
+          return Container(height: 500,
+              child: ListView(
+                shrinkWrap: true,
+                reverse: true,
+                children: messageWidgets,
+              ));
+        },
+        stream: _firestore.collection(kDishes).snapshots(),
+      );
+
   }
   Widget getCarouselBox(Widget childWidget,double radius,double height,) {
     return Container(
@@ -96,8 +134,8 @@ class HomePageElement extends StatelessWidget {
 
 
 class FoodElementHomePage extends StatefulWidget {
-  const FoodElementHomePage({Key? key}) : super(key: key);
-
+  FoodElementHomePage({required this.dishHomePage});
+  DishHomePage dishHomePage;
   @override
   State<FoodElementHomePage> createState() => _FoodElementHomePageState();
 }
@@ -132,8 +170,8 @@ class _FoodElementHomePageState extends State<FoodElementHomePage> {
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(15),
                       bottomLeft: Radius.circular(15)),
-                  child: Image.asset(
-                    "assets/images/food.jpeg",
+                  child: Image.network(
+                    widget.dishHomePage.dishImage,
                     height: 180.0,
                     width: 120.0,
                     fit: BoxFit.cover,
@@ -151,7 +189,7 @@ class _FoodElementHomePageState extends State<FoodElementHomePage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Butter Chicken",
+                          widget.dishHomePage.dishName,
                           style: TextStyle(
                             fontSize: 18.0,
                             color: Colors.white,
@@ -167,7 +205,7 @@ class _FoodElementHomePageState extends State<FoodElementHomePage> {
                         "assets/images/vegnonveg.svg",
                         semanticsLabel: 'vegnonveg',color: Colors.green,
                         height: 20,
-                    ),SizedBox(width:10),Text("Maharashtrian",style: TextStyle(color: Colors.white),)],),
+                    ),SizedBox(width:10),Text(widget.dishHomePage.dishCuisine,style: TextStyle(color: Colors.white),)],),
                     SizedBox(
                       height: 6.0,
                     ),
@@ -189,7 +227,7 @@ class _FoodElementHomePageState extends State<FoodElementHomePage> {
                     ),
                     Divider(color: kOrange,),
                     Row(mainAxisAlignment: MainAxisAlignment.end,
-                      children: [Text("₹110",style: TextStyle(color: Colors.white),)],
+                      children: [Text('₹ ${widget.dishHomePage.dishPrice}',style: TextStyle(color: Colors.white),)],
                     )
 
                   ],
@@ -202,4 +240,14 @@ class _FoodElementHomePageState extends State<FoodElementHomePage> {
       ),
     );
   }
+}
+class DishHomePage{
+  String dishName ;
+  String dishDescription;
+  String dishImage;
+  String dishCuisine ;
+  String dishPrice ;
+  String sellerId;
+  DishHomePage({required this.dishName, required this.dishDescription,required this.dishImage,
+    required this.dishCuisine, required this.dishPrice, required this.sellerId});
 }
