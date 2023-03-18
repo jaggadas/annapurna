@@ -1,3 +1,4 @@
+import 'package:annapurna/screens/cart.dart';
 import 'package:annapurna/screens/item_nav_bar.dart';
 import 'package:annapurna/utils/colors.dart';
 import 'package:flutter/cupertino.dart';
@@ -5,7 +6,14 @@ import 'package:flutter/material.dart';
 
 class dish_description extends StatefulWidget {
   static const String id = 'dish_description';
-  const dish_description({super.key});
+  final String itemName;
+  final String itemPrice;
+  final String imagePath;
+  const dish_description({super.key,
+  required this.imagePath,
+  required this.itemName,
+  required this.itemPrice,
+  });
 
   @override
   State<dish_description> createState() => _dish_descriptionState();
@@ -36,7 +44,10 @@ class _dish_descriptionState extends State<dish_description> {
                   ),
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => cart(imagePath: '', itemName: '', itemPrice: '',)
+                    ));
+                  },
                   child: Icon(
                     CupertinoIcons.cart_fill,
                     color: Colors.white,

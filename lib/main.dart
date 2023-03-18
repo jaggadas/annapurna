@@ -4,6 +4,7 @@ import 'package:annapurna/screens/NameScreen.dart';
 import 'package:annapurna/screens/Splash.dart';
 import 'package:annapurna/screens/OnboardingScreen.dart';
 import 'package:annapurna/screens/Splash.dart';
+import 'package:annapurna/screens/cart.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,10 @@ class MyApp extends StatelessWidget {
           splash.id:(context)=> splash(),
           HomePage.id:(context)=> HomePage(),
           LoginPage.id:(context)=> LoginPage(),
-          dish_description.id:(context)=> dish_description(),
+          dish_description.id:(context)=> dish_description(imagePath: '', itemName: '', itemPrice: '',),
+          
+cart.id:(context)=> cart(imagePath: '', itemName: '', itemPrice: '',),
+dish_description.id:(context)=> dish_description(imagePath: '', itemName: '', itemPrice: '',),
           NameScreen.id:(context)=> NameScreen(),
         } );
 
