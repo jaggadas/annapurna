@@ -1,4 +1,5 @@
 import 'package:annapurna/screens/HomePage.dart';
+import 'package:annapurna/utils/firebase.dart';
 import 'package:annapurna/utils/toast.dart';
 import 'package:flutter/material.dart';
 
@@ -138,6 +139,9 @@ class AddYourDishesPersonalDetails extends StatelessWidget {
                       if (!_formKey.currentState!.validate()) {
                         return;
                       }
+                      await AuthService().registerUserForSelling(currentNameController.text, currentEmailController.text,
+                          addressController.text, localityController.text, cityController.text,
+                          pincodeController.text, stateController.text);
                       FlutterToastService().showToast("Registration Completed");
                       Navigator.push(context, MaterialPageRoute(builder: (context){
                         return HomePage.sellActivated();

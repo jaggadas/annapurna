@@ -24,13 +24,36 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-
-  final List<Widget> _pages = [
-    HomePageElement(),
-    AddDishesSell(),
+  bool isUserRegistered = false;
+  List<Widget> _pages =[HomePageElement(),
+    AddYourDishesHome(),
     Container(),
-    Container()
-  ];
+    Container()];
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    isUserRegisteredBool();
+
+  }
+  isUserRegisteredBool()async {
+    isUserRegistered=await AuthService().isUserRegistered();
+    setState(() {
+      getListOfPages();
+    });
+  }
+  getListOfPages(){
+    _pages = [
+      HomePageElement(),
+      isUserRegistered?AddDishesSell():AddYourDishesHome(),
+      Container(),
+      Container()
+    ];
+    setState(() {
+
+    });
+  }
+
 
   void _onItemTapped(int index) {
     setState(() {

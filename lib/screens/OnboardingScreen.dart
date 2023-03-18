@@ -92,7 +92,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> with WidgetsBinding
         );
       });
     } else {
-      Navigator.push(context, MaterialPageRoute(builder: (context){return FirebaseAuth.instance.currentUser!=null?HomePage(): LoginPage();}));
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context){return FirebaseAuth.instance.currentUser!=null?HomePage(): LoginPage();}));
     }
   }
 

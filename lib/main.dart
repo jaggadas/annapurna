@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: dish_description(),
+        home: FirebaseAuth.instance.currentUser!=null?HomePage():LoginPage(),
         routes: {
           OnBoardingScreen.id:(context)=> OnBoardingScreen(),
           splash.id:(context)=> splash(),
