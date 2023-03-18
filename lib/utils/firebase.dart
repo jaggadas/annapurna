@@ -59,6 +59,7 @@ class AuthService {
       //       textColor: Colors.white,
       //       fontSize: 16.0);
     }
+
   }
 
   signInWithOTP(smsCode, verId, BuildContext context) {
@@ -162,4 +163,7 @@ class AuthService {
       print(e);
     }
   }
+
+
 }
+
