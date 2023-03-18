@@ -1,3 +1,6 @@
+apply plugin: 'com.android.application'
+// Add this line
+apply plugin: 'com.google.gms.google-services'
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
@@ -69,6 +72,8 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation platform('com.google.firebase:firebase-bom:31.2.3')
+    implementation "com.google.firebase:firebase-bom:30.5.0"
+    implementation 'com.google.firebase:firebase-auth:21.0.8'
     implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-storage:20.0.2'
 }

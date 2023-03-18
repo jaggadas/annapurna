@@ -41,7 +41,7 @@ dependencies:
   firebase_auth: ^4.3.0
 
 dependency_overrides:
-  firebase_core_platform_interface: 4.5.1
+  firebase_core_platform_interface: 4.5.2
 dev_dependencies:
   flutter_test:
     sdk: flutter
