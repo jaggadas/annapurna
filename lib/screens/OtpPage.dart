@@ -128,7 +128,7 @@ class _OtpPageState extends State<OtpPage> {
                       padding: const EdgeInsets.only(
                           left: 70.0, top: 100.0, bottom: 100.0, right: 70.0),
                       child: Image.asset(
-                        'assets/images/otp_image.png',
+                        'assets/images/ver-01.png',
                         width: MediaQuery.of(context).size.width / 1.7,
                         height: MediaQuery.of(context).size.height / 4,
                       ),

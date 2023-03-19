@@ -25,7 +25,13 @@ class _LoginPageState extends State<LoginPage> {
       body: FadeAnimation(
         1,Stack(children: [
           Container(
-            child: Image.asset('assets/images/bg_image.jpg', fit: BoxFit.fitWidth,),
+            height: MediaQuery.of(context).size.height,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/login_screen.png'),
+                fit: BoxFit.fill
+              )
+            ),
           ),
           Container(
             color: Colors.transparent,

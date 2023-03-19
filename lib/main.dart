@@ -11,7 +11,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:annapurna/screens/dish_description.dart';
 
-void main()async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const MyApp());
@@ -27,18 +27,12 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         home: splash(),
         routes: {
-          OnBoardingScreen.id:(context)=> OnBoardingScreen(),
-          splash.id:(context)=> splash(),
-          HomePage.id:(context)=> HomePage(),
-          LoginPage.id:(context)=> LoginPage(),
-          ngo.id:(context)=> ngo(),
-          dish_description.id:(context)=> dish_description(imagePath: '', itemName: '', itemPrice: '',),
-          
-cart.id:(context)=> cart(imagePath: '', itemName: '', itemPrice: '',),
-dish_description.id:(context)=> dish_description(imagePath: '', itemName: '', itemPrice: '',),
-          NameScreen.id:(context)=> NameScreen(),
-        } );
-
-
+          OnBoardingScreen.id: (context) => OnBoardingScreen(),
+          splash.id: (context) => splash(),
+          HomePage.id: (context) => HomePage(),
+          LoginPage.id: (context) => LoginPage(),
+          ngo.id: (context) => ngo(),
+          NameScreen.id: (context) => NameScreen(),
+        });
   }
 }
