@@ -7,18 +7,18 @@ class AddYourDishesHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(width: double.infinity,
-      padding: EdgeInsets.all(10),
+      padding: EdgeInsets.fromLTRB(10, 25, 10, 10),
       child: Column(crossAxisAlignment: CrossAxisAlignment.center,
         children: [
             CircleAvatar(radius: 150,
               backgroundImage: AssetImage('assets/images/home3.png',),
             ),
-          SizedBox(height: 10,),
+          SizedBox(height: 35,),
           Text('Monetize your cooking skills. Sell your homemade food to customers using our platform '
               'and earn money from home. Our app provides an easy platform for you to showcase your culinary '
               'talents and reach a wider audience. Join our community of talented home chefs today.',
             style: TextStyle(color: Colors.white,fontSize: 15),textAlign: TextAlign.center,),
-          SizedBox(height: 75,),
+          SizedBox(height: 35,),
           GestureDetector(
             onTap: () async {
               Navigator.push(context, MaterialPageRoute(builder: (context){

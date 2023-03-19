@@ -117,7 +117,7 @@ class _OtpPageState extends State<OtpPage> {
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize:
-                                MediaQuery.of(context).size.height / 20,
+                                MediaQuery.of(context).size.height / 30,
                                 fontWeight: FontWeight.bold),
                           ),
                         ),

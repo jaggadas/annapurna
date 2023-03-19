@@ -38,10 +38,12 @@ class _LoginPageState extends State<LoginPage> {
             child: Align(
               alignment: Alignment.bottomCenter,
               child: Container(
+                padding: EdgeInsets.only(top: 60),
                 height: 400,
                 child: Column(
                  children: [
                    Text('Welcome!', style: TextStyle(color: Colors.white, fontSize: 50),),
+                   SizedBox(height: 15,),
                    Container(
                      padding: EdgeInsets.all(5),
                      decoration: BoxDecoration(
@@ -54,6 +56,7 @@ class _LoginPageState extends State<LoginPage> {
                          //       offset: Offset(0, 10))
                          // ]),
                      ),
+
                      child: Column(
                        children: <Widget>[
                          Container(
@@ -80,7 +83,7 @@ class _LoginPageState extends State<LoginPage> {
                              ),
                            ),
                          ),
-                         SizedBox(height: 20,),
+                         SizedBox(height: 35,),
                          FadeAnimation(
                            2,
                            GestureDetector(

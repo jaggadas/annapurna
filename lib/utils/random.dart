@@ -4,13 +4,13 @@ InputDecoration getInputDecoration(String hintText) {
   return InputDecoration(
 
     enabledBorder: OutlineInputBorder(
-    borderRadius: BorderRadius.circular(10.0),
+    borderRadius: BorderRadius.circular(28.0),
     borderSide: const BorderSide(
       color: kMustard,
     ),
   ),
     focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(10.0),
+      borderRadius: BorderRadius.circular(28.0),
       borderSide: const BorderSide(
         color: kMustard,
       ),
@@ -18,7 +18,7 @@ InputDecoration getInputDecoration(String hintText) {
     hintText: hintText,
     hintStyle: TextStyle(color: kGreyAccent),
     border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(10.0),
+      borderRadius: BorderRadius.circular(28.0),
       borderSide: const BorderSide(),
     ),
     //fillColor: Colors.green

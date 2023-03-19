@@ -121,7 +121,11 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      appBar: AppBar(leading: InkWell(child: Icon(Icons.menu,color: kRed,),onTap: (){
+      appBar: AppBar(
+        title: Image.asset("assets/images/logo.png", fit: BoxFit.contain,height: 125,
+        alignment: FractionalOffset.center,
+        ),centerTitle: true,
+        leading: InkWell(child: Icon(Icons.menu,color: kRed,),onTap: (){
         _scaffoldKey.currentState!.openDrawer();
       },),elevation: 0,backgroundColor: kGrey,),
       floatingActionButton: FloatingActionButton(onPressed: (){

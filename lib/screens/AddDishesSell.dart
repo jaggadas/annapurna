@@ -49,8 +49,12 @@ class _AddDishesSellState extends State<AddDishesSell> {
                     children: [
                       GestureDetector(
                         onTap: (){pickImage();},
-                        child:   Container(height: 250,child: Center(child: Icon(Icons.add,color: Colors.black,),),decoration:
+                        child:   Container(height: 250,decoration:
                         BoxDecoration(color: Colors.white,shape: BoxShape.circle,
+                          image: DecorationImage(
+                              image: AssetImage('assets/images/add-04.png'),
+                              fit: BoxFit.contain
+                          )
                              ),),
                       ),
                     ],
@@ -121,7 +125,7 @@ class _AddDishesSellState extends State<AddDishesSell> {
                   ),
                 ),
               ),
-
+                SizedBox(height: 15,),
               GestureDetector(
                 onTap: () async {
                   if (!_formKey.currentState!.validate()) {
@@ -138,11 +142,12 @@ class _AddDishesSellState extends State<AddDishesSell> {
 
 
                 },
+
                 child: Container(
                   height: 50,
                   width: MediaQuery.of(context).size.width*1,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(65),
                       gradient: LinearGradient(colors: [
                         Color.fromRGBO(255, 169, 0, 1),
                         Color.fromRGBO(255, 169, 0, .6),
@@ -156,7 +161,9 @@ class _AddDishesSellState extends State<AddDishesSell> {
                     ),
                   ),
                 ),
+
               ),
+                SizedBox(height: 15,),
             ],),
           ),
         ),

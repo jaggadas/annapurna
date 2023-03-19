@@ -41,7 +41,7 @@ class _DonateDishesDetailsState extends State<DonateDishesDetails> {
             child: Container(padding: EdgeInsets.all(10),
               child: Column(crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Center(child: Container(child: Image.asset('assets/images/logo.png', height: 300,),)),
+                  Center(child: Container(child: Image.asset('assets/images/don.png', height: 280,),)),
                   Text('Dish Name',style: TextStyle(color: Colors.white,fontSize: 15),),
                   SizedBox(height: 5,),
                   Container(height: textFieldHeight,width: MediaQuery.of(context).size.width,

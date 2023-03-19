@@ -10,7 +10,7 @@ class DonateYourDishesHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.all(10),
+      padding: EdgeInsets.fromLTRB(10, 20, 10, 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -21,7 +21,7 @@ class DonateYourDishesHome extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 10,
+            height: 45,
           ),
           Text(
             'Donate your excess food to those in need through our app.'
@@ -31,7 +31,7 @@ class DonateYourDishesHome extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           SizedBox(
-            height: 75,
+            height: 55,
           ),
           GestureDetector(
             onTap: () async {

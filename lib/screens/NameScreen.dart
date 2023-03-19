@@ -32,10 +32,10 @@ class NameScreen extends StatelessWidget {
                 children: [
                   SizedBox(height: 50,),
                   Container(
-                    child: Image.asset('assets/images/otp_image.png', height: MediaQuery.of(context).size.height/3,),
+                    child: Image.asset('assets/images/gal-04.png', height: MediaQuery.of(context).size.height/3,),
                   ),
                   SizedBox(height: 30,),
-                  Text('Your Full Name',style: TextStyle(color: Colors.white,fontSize: 20),),
+                  Text('Enter Full Name',style: TextStyle(color: Colors.white,fontSize: 20),),
                   SizedBox(height: 30,),
                   Container(height: textFieldHeight,width: MediaQuery.of(context).size.width,
                     child: TextFormField(style: getTextFieldStyle(),
@@ -50,7 +50,8 @@ class NameScreen extends StatelessWidget {
                       },
                     ),
                   ),
-                  Spacer(),
+                  SizedBox(height: 35,),
+                 // Spacer(),
                   GestureDetector(
                     onTap: (){
                      AuthService().addName(name);
