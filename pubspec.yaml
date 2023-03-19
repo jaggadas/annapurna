@@ -47,6 +47,7 @@ dependencies:
   fluttertoast: ^8.0.8
   image_picker: ^0.8.7
   http: ^0.13.5
+  flutter_native_splash: ^2.2.19
 
 dependency_overrides:
   firebase_core_platform_interface: 4.5.2
