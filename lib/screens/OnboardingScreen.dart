@@ -18,6 +18,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> with WidgetsBinding
   int _currentIndex = 0;
 
   final List<String> _mockImages = [
+    'assets/images/one.png',
     'assets/images/okk.png',
     'assets/images/two.png',
     'assets/images/ok.png',
@@ -63,7 +64,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> with WidgetsBinding
   Row buildDots(currentIndex) {
     Color currentColor = Colors.grey;
     final Color normalColor = Colors.grey.withOpacity(0.5);
-    const List temp = [0, 1, 2];
+    const List temp = [0, 1, 2,3];
     return Row(
       children: [
         ...temp.map((element) {
@@ -82,7 +83,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> with WidgetsBinding
   }
 
   void swipeNextandSubmit() {
-    if (_currentIndex <= 1) {
+    if (_currentIndex <= 2) {
       setState(() {
         _currentIndex = _currentIndex + 1;
         _pageController.animateToPage(
@@ -121,7 +122,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> with WidgetsBinding
                             deviceHeight: _deviceHeight,
                             mockImage: _mockImages[i]);
                       },
-                      itemCount: 3,
+                      itemCount: 4,
                     ),
                   ),
                   Container(
@@ -136,7 +137,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> with WidgetsBinding
                           child: TextButton(
                             onPressed: () {
                               setState(() {
-                                _currentIndex=2;
+                                _currentIndex=3;
                               });
               },
                             child: Text('Skip', style: TextStyle(color: Colors.white),),
@@ -157,8 +158,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> with WidgetsBinding
                                   );
                                 },
                                 duration: const Duration(milliseconds: 250),
-                                child: Text(_currentIndex <= 1 ? 'Next' : 'Get Started',
-                                    key: ValueKey(_currentIndex <= 1 ? 'Next' : 'Get Started'),
+                                child: Text(_currentIndex <= 2 ? 'Next' : 'Get Started',
+                                    key: ValueKey(_currentIndex <= 2 ? 'Next' : 'Get Started'),
                                   style: TextStyle(color: Colors.white),
                                 ),
                               ),

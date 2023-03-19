@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: splash(),
+        home: OnBoardingScreen(),
         routes: {
           OnBoardingScreen.id: (context) => OnBoardingScreen(),
           splash.id: (context) => splash(),
