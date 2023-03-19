@@ -134,9 +134,11 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> with WidgetsBinding
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: TextButton(
-                            onPressed: () => Navigator.of(context).pushNamed(
-                              LoginPage.id
-                            ),
+                            onPressed: () {
+                              setState(() {
+                                _currentIndex=2;
+                              });
+              },
                             child: Text('Skip', style: TextStyle(color: Colors.white),),
                           ),
                         ),
