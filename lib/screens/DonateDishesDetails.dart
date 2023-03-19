@@ -55,14 +55,14 @@ class _DonateDishesDetailsState extends State<DonateDishesDetails> {
                     ),
                   ),
 
-                  Text('Price per piece',style: TextStyle(color: Colors.white,fontSize: 15),),
+                  Text('Quantity',style: TextStyle(color: Colors.white,fontSize: 15),),
                   SizedBox(height: 5,),
                   Container(height: textFieldHeight,width: MediaQuery.of(context).size.width,
                     child: TextFormField(style: getTextFieldStyle(),
                       controller: priceController,
                       validator: validateNotEmptyString,
                       decoration: getInputDecoration(
-                        "Enter price",
+                        "Enter Quantity",
 
                       ),
                     ),
