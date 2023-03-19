@@ -21,7 +21,7 @@ class _CustomerSupportState extends State<CustomerSupport> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(backgroundColor: kRed  ,),
+    return Scaffold(appBar: AppBar(backgroundColor: kRed  ,title: Text('AivaChat Support'),),
       backgroundColor: kGrey,
       body:StatefulBuilder(builder: (BuildContext context, StateSetter setStatee){ return SingleChildScrollView(
         child: Column( mainAxisAlignment: MainAxisAlignment.spaceBetween,
