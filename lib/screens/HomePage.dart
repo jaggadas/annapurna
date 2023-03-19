@@ -77,7 +77,12 @@ class _HomePageState extends State<HomePage> {
         Container(width: double.infinity,
           child: Column(crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              TextButton(onPressed: ()async{await AuthService().signOut(contextt);}, child: Text("Log Out",style: TextStyle(color: Colors.white,fontSize: 20),)),
+              TextButton(onPressed: ()async{await AuthService().signOut(contextt);},
+                  child: Text("Log Out",style: TextStyle(color: Colors.white,fontSize: 20),)),
+              TextButton(onPressed: ()async{},
+                  child: Text("About us",style: TextStyle(color: Colors.white,fontSize: 20),)),
+              TextButton(onPressed: ()async{},
+                  child: Text("Contact",style: TextStyle(color: Colors.white,fontSize: 20),)),
             ],
           ),
         )
