@@ -32,10 +32,9 @@ class MyApp extends StatelessWidget {
           HomePage.id:(context)=> HomePage(),
           LoginPage.id:(context)=> LoginPage(),
           ngo.id:(context)=> ngo(),
-          dish_description.id:(context)=> dish_description(imagePath: '', itemName: '', itemPrice: '',),
+
           
-cart.id:(context)=> cart(imagePath: '', itemName: '', itemPrice: '',),
-dish_description.id:(context)=> dish_description(imagePath: '', itemName: '', itemPrice: '',),
+
           NameScreen.id:(context)=> NameScreen(),
         } );
 

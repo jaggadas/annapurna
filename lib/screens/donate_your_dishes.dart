@@ -17,7 +17,7 @@ class DonateYourDishesHome extends StatelessWidget {
           CircleAvatar(
             radius: 150,
             backgroundImage: AssetImage(
-              'assets/images/indian_women.jpg',
+              'assets/images/home1.png',
             ),
           ),
           SizedBox(

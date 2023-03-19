@@ -11,7 +11,7 @@ class AddYourDishesHome extends StatelessWidget {
       child: Column(crossAxisAlignment: CrossAxisAlignment.center,
         children: [
             CircleAvatar(radius: 150,
-              backgroundImage: AssetImage('assets/images/indian_women.jpg',),
+              backgroundImage: AssetImage('assets/images/home3.png',),
             ),
           SizedBox(height: 10,),
           Text('Monetize your cooking skills. Sell your homemade food to customers using our platform '
