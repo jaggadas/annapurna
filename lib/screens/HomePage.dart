@@ -74,7 +74,13 @@ class _HomePageState extends State<HomePage> {
       children: <Widget>[
 
        SizedBox(height: 200,),
-        TextButton(onPressed: ()async{await AuthService().signOut(contextt);}, child: Text("Log Out",style: TextStyle(color: Colors.white),))
+        Container(width: double.infinity,
+          child: Column(crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              TextButton(onPressed: ()async{await AuthService().signOut(contextt);}, child: Text("Log Out",style: TextStyle(color: Colors.white,fontSize: 20),)),
+            ],
+          ),
+        )
       ],
     );
   }
