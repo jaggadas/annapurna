@@ -89,12 +89,28 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(key: _scaffoldKey,
       backgroundColor: kGrey,
-      drawer:  Drawer(backgroundColor: kRed,
+      drawer:  Drawer(backgroundColor: kGreyAccent,
 
         // Add a ListView to the drawer. This ensures the user can scroll
         // through the options in the drawer if there isn't enough vertical
         // space to fit everything.
-        child: getDrawerElements(context),
+        child: ListView(
+          children: <Widget>[
+            ListTile(
+              title: Text("Log Out",style: TextStyle(color: Colors.white,fontSize: 20),),
+              trailing: Icon(Icons.power_settings_new, color: Colors.white,),
+              onTap: ()async{await AuthService().signOut(context);}
+            ),
+            ListTile(
+              title: Text("About Us",style: TextStyle(color: Colors.white,fontSize: 20),),
+              trailing: Icon(Icons.people, color: Colors.white,),
+            ),
+            ListTile(
+              title: Text("Contact Us",style: TextStyle(color: Colors.white,fontSize: 20),),
+              trailing: Icon(Icons.phone, color: Colors.white,),
+            ),
+          ],
+        ),
       ),
       bottomNavigationBar:BottomNavigationBar(backgroundColor: kGrey,
         currentIndex: widget.selectedIndex,
